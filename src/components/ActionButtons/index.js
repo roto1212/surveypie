@@ -1,20 +1,23 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 
-import questionsState from "../../stores/questions/atom";
+import questionsLengthState from "../../stores/questions/questionsLengthState";
 import Button from "../Button";
+import useStep from "../../hooks/useStep";
 
 function ActionButtons() {
-  const questions = useRecoilValue(questionsState);
-  const questionLength = questions.length;
-  let { step } = useParams();
-  step = parseInt(step);
+  const step = useStep();
+  const questionLength = useRecoilValue(questionsLengthState);
   const navigate = useNavigate();
   const isLast = questionLength - 1 === step;
+
   return <ActionButtonsWrapper>
-    {step === 0 || <Button type="SECONDARY" onClick={() => navigate(`${step - 1}`)}>이전</Button>}
-    {isLast ? <Button type="PRIMARY" onClick={() => navigate(`/done`)}>제출</Button> : <Button type="PRIMARY" onClick={() => navigate(`${step + 1}`)} >다음</Button>}
+    {step === 0 || <Button type="SECONDARY" onClick={() => navigate(`${step + 1}`)}>이전</Button>}
+    {isLast ?
+      <Button type="PRIMARY" onClick={() => navigate('/done')}>제출</Button> :
+      <Button type="PRIMARY" onClick={() => navigate(`${step + 1}`)}>다음</Button>
+    }
   </ActionButtonsWrapper>
 }
 

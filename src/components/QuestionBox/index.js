@@ -10,10 +10,16 @@ import useCurrentAnswer from "../../hooks/useCurrentAnswer";
 function QuestionBox() {
   const [answer, setAnswer] = useCurrentAnswer();
   const question = useCurrentQuestion();
+
   return <QuestionBoxWrapper>
     <Title>{question.title}</Title>
     <Desc>{question.desc}</Desc>
-    <Body type={question.type} answer={answer} setAnswer={setAnswer} options={question.options} />
+    <Body
+      type={question.type}
+      answer={answer}
+      setAnswer={setAnswer}
+      options={question.options}
+    />
     <ActionButtons />
   </QuestionBoxWrapper>
 }

@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import CompletionPage from './pages/CompletionPage';
 import SurveyPage from './pages/SurveyPage';
 import WelcomePage from './pages/WelcomePage';
-function App() {
 
+function App() {
   return (
     <AppWrapper>
       <Box>
