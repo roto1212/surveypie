@@ -1,14 +1,16 @@
+import SelectInput from "../SelectInput";
+import TextAreaInput from "../TextAreaInput";
 import TextInput from "../TextInput";
 
-function Body({ type, answer, setAnswer }) {
+function Body({ type, answer, setAnswer, options }) {
   let InputComponent = null;
 
-  // if (type === "select") inputComponent = SelectInput;
+  if (type === "select") InputComponent = SelectInput;
   if (type === "text") InputComponent = TextInput;
-  // if (type === "textarea") inputComponent = TextAreaInput;
+  if (type === "textarea") InputComponent = TextAreaInput;
 
   return <>
-    <InputComponent answer={answer} setAnswer={setAnswer} />
+    <InputComponent answer={answer} setAnswer={setAnswer} options={options} />
   </>
 }
 
