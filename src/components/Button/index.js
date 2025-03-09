@@ -23,12 +23,12 @@ const Button = styled.button`
     background: ${({ type }) => buttonColorMap[type].HOVER.BACKGROUND};
     color: ${({ type }) => buttonColorMap[type].HOVER.COLOR};
     border: ${({ type }) => type === 'TERTIARY' && `1px solid ${buttonColorMap[type].HOVER.BORDER}`};
-
+  }
   &:active {
     background: ${({ type }) => buttonColorMap[type].PRESSED.BACKGROUND};
     color: ${({ type }) => buttonColorMap[type].PRESSED.COLOR}; 
     border: ${({ type }) => type === 'TERTIARY' && `1px solid ${buttonColorMap[type].PRESSED.BORDER}`};
-
+  }
   &:disabled {
     background: ${({ type }) => buttonColorMap[type].DISABLED.BACKGROUND};
     color: ${({ type }) => buttonColorMap[type].DISABLED.COLOR};

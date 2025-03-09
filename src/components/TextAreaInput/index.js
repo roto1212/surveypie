@@ -3,7 +3,7 @@ import styled from "styled-components";
 function TextAreaInput({ answer = "", setAnswer, options }) {
   return <TextArea type="text" value={answer} onChange={(e) => {
     setAnswer(e.target.value);
-  }} placeholder={options.placeholder} />
+  }} placeholder={options.placeholder} {...(options?.max && { maxLength: options.max })} />
 }
 
 const TextArea = styled.textarea`

@@ -9,6 +9,7 @@ import useSurveyId from "../../hooks/useSurveyId";
 import postAnswers from "../../services/postAnswers";
 import useAnswers from "../../hooks/useAnswers";
 import { useState } from "react";
+import useRequiredOption from "../../hooks/useRequriedOption";
 
 function ActionButtons() {
   const step = useStep();
@@ -17,14 +18,16 @@ function ActionButtons() {
   const questionLength = useRecoilValue(questionsLengthState);
   const navigate = useNavigate();
   const isLast = parseInt(questionLength) - 1 === step;
-  const answers = useAnswers();
-
+  const [answers, setAnswers] = useAnswers();
+  const isRequired = useRequiredOption();
+  const canMoveNext = isRequired ? answers[step]?.length > 0 : true;
   return <ActionButtonsWrapper>
     {step === 0 || <Button type="SECONDARY" onClick={() => navigate(`${step - 1}`)}>이전</Button>}
     {isLast ?
       <Button type="PRIMARY" onClick={() => {
         setIsLoading(true);
         postAnswers(surveyId, answers).then(() => {
+          setAnswers([]);
           navigate(`/done/${surveyId}`);
         }).catch((error) => {
           console.error(error.response);
@@ -32,8 +35,8 @@ function ActionButtons() {
         }).finally(() => {
           setIsLoading(false);
         });
-      }} disabled={isLoading}> {isLoading ? '제출중...' : '제출'} </Button> :
-      <Button type="PRIMARY" onClick={() => navigate(`${step + 1}`)}>다음</Button>
+      }} disabled={isLoading || !canMoveNext}> {isLoading ? '제출중...' : '제출'} </Button> :
+      <Button type="PRIMARY" disabled={!canMoveNext} onClick={() => navigate(`${step + 1}`)}>다음</Button>
     }
   </ActionButtonsWrapper >
 }
