@@ -4,11 +4,9 @@ import questionsState from "./atom";
 const questionsLengthState = selector({
   key: "questionsLengthState",
   get: ({ get }) => {
-    const questions = get(questionsState);
-    return questions.length;
+    const survey = get(questionsState);
+    return survey.questions.length;
   },
 });
 
-export default questionsLengthState;
-
-
+export default questionsLengthState; 

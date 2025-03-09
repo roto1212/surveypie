@@ -10,28 +10,29 @@ const buttonColorMap = {
 
 const Button = styled.button`
   padding: 16px 24px;
-  width: 200px;
+  min-width: 200px;
   color: ${({ type }) => buttonColorMap[type].DEFAULT.COLOR};
   background: ${({ type }) => buttonColorMap[type].DEFAULT.BACKGROUND};
   border-radius: 4px;
   border: none;
   font-weight: bold;
-  border: ${({ type }) => type === 'TERTIARY' && `1px solid ${buttonColorMap[type].DEFAULT.BORDER}` };
+  font-size: 18px;
+  border: ${({ type }) => type === 'TERTIARY' && `1px solid ${buttonColorMap[type].DEFAULT.BORDER}`};
 
   &:hover {
     background: ${({ type }) => buttonColorMap[type].HOVER.BACKGROUND};
     color: ${({ type }) => buttonColorMap[type].HOVER.COLOR};
-    border: ${({ type }) => type === 'TERTIARY' && `1px solid ${buttonColorMap[type].HOVER.BORDER}` };
+    border: ${({ type }) => type === 'TERTIARY' && `1px solid ${buttonColorMap[type].HOVER.BORDER}`};
 
   &:active {
     background: ${({ type }) => buttonColorMap[type].PRESSED.BACKGROUND};
     color: ${({ type }) => buttonColorMap[type].PRESSED.COLOR}; 
-    border: ${({ type }) => type === 'TERTIARY' && `1px solid ${buttonColorMap[type].PRESSED.BORDER}` };
+    border: ${({ type }) => type === 'TERTIARY' && `1px solid ${buttonColorMap[type].PRESSED.BORDER}`};
 
   &:disabled {
     background: ${({ type }) => buttonColorMap[type].DISABLED.BACKGROUND};
     color: ${({ type }) => buttonColorMap[type].DISABLED.COLOR};
-    border: ${({ type }) => type === 'TERTIARY' && `1px solid ${buttonColorMap[type].DISABLED.BORDER}` };
+    border: ${({ type }) => type === 'TERTIARY' && `1px solid ${buttonColorMap[type].DISABLED.BORDER}`};
   }
 `;
 

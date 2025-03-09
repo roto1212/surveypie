@@ -11,8 +11,8 @@ function App() {
       <Box>
         <Routes>
           <Route path="/" element={<WelcomePage />} />
-          <Route path="/done" element={<CompletionPage />} />
-          <Route path="/survey/:id" element={<SurveyPage />} >
+          <Route path="/done/:surveyId" element={<CompletionPage />} />
+          <Route path="/survey/:surveyId" element={<SurveyPage />} >
             <Route path=":step" element={<SurveyPage />} />
           </Route>
         </Routes>

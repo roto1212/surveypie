@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-function TextInput({ answer, setAnswer, options }) {
+function TextInput({ answer = "", setAnswer, options }) {
   return <Input type="text" value={answer} onChange={(e) => {
     setAnswer(e.target.value);
-  }} placeholder={options.placeholder}  />
+  }} placeholder={options.placeholder} />
 }
 
 const Input = styled.input`
