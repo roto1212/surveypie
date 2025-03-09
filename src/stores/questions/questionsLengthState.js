@@ -1,6 +1,7 @@
-import { atom } from "recoil";
+import { selector } from "recoil";
 import questionsState from "./atom";
-const questionsLengthState = atom({
+
+const questionsLengthState = selector({
   key: "questionsLengthState",
   get: ({ get }) => {
     const questions = get(questionsState);
