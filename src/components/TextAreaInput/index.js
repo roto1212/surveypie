@@ -15,6 +15,7 @@ const TextArea = styled.textarea`
   padding: 12px 18px;
   height: 196px;
   resize: none;
+  width: 100%;
 `;
 
 export default TextAreaInput;
